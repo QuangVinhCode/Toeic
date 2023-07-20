@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="toeic" match-name="baitap"/>
+  <table-filter match-catalog="toeic" match-name="chude"/>
+  <table-filter match-catalog="toeic" match-name="phanhoi"/>
+  <table-filter match-catalog="toeic" match-name="taikhoan"/>
+  <table-filter match-catalog="toeic" match-name="taikhoancoxephang"/>
+  <table-filter match-catalog="toeic" match-name="taikhoanthuchienbaitap"/>
+  <table-filter match-catalog="toeic" match-name="taikhoanthuchienchude"/>
+  <table-filter match-catalog="toeic" match-name="tuvung"/>
+  <table-filter match-catalog="toeic" match-name="xephang"/>
+</hibernate-reverse-engineering>
