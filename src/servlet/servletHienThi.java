@@ -26,9 +26,25 @@ public class servletHienThi extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Chude> listchude = dao.findALL();
-		request.setAttribute("listchude", listchude);
-		request.getRequestDispatcher("/WEB-INF/view/trangchu.jsp").forward(request, response);
+		
+		String action = request.getParameter("action");
+		String url = "";
+		if (action == null)
+			action = "hienthi";
+		switch (action) {
+		case "hienthi":
+			List<Chude> listchude = dao.findALL();
+			request.setAttribute("listchude", listchude);
+			url = "/WEB-INF/view/trangchu.jsp";
+			break;
+		case "dangky":
+			url = "/WEB-INF/view/dangky.jsp";
+			break;
+		case "dangnhap":
+			url = "/WEB-INF/view/dangnhap.jsp";
+			break;
+		}
+		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

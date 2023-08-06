@@ -1,11 +1,9 @@
 package model;
-// Generated Jul 20, 2023 7:38:23 PM by Hibernate Tools 4.3.5.Final
+// Generated Jul 30, 2023 7:12:18 PM by Hibernate Tools 4.3.5.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "tuvung", catalog = "toeic")
 public class Tuvung implements java.io.Serializable {
 
-	private Integer maTv;
+	private int maTv;
 	private Chude chude;
 	private String tenTuVung;
 	private String dichTv;
@@ -27,7 +25,8 @@ public class Tuvung implements java.io.Serializable {
 	public Tuvung() {
 	}
 
-	public Tuvung(Chude chude, String tenTuVung, String dichTv, String hinhAnhTv) {
+	public Tuvung(int maTv, Chude chude, String tenTuVung, String dichTv, String hinhAnhTv) {
+		this.maTv = maTv;
 		this.chude = chude;
 		this.tenTuVung = tenTuVung;
 		this.dichTv = dichTv;
@@ -35,14 +34,13 @@ public class Tuvung implements java.io.Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "MaTV", unique = true, nullable = false)
-	public Integer getMaTv() {
+	public int getMaTv() {
 		return this.maTv;
 	}
 
-	public void setMaTv(Integer maTv) {
+	public void setMaTv(int maTv) {
 		this.maTv = maTv;
 	}
 

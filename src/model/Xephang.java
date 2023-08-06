@@ -1,11 +1,13 @@
 package model;
-// Generated Jul 20, 2023 7:38:23 PM by Hibernate Tools 4.3.5.Final
+// Generated Jul 30, 2023 7:12:18 PM by Hibernate Tools 4.3.5.Final
 
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -17,32 +19,31 @@ import javax.persistence.Table;
 @Table(name = "xephang", catalog = "toeic")
 public class Xephang implements java.io.Serializable {
 
-	private int maXh;
+	private Integer maXh;
 	private String tenXh;
 	private Set<Taikhoancoxephang> taikhoancoxephangs = new HashSet<Taikhoancoxephang>(0);
 
 	public Xephang() {
 	}
 
-	public Xephang(int maXh, String tenXh) {
-		this.maXh = maXh;
+	public Xephang(String tenXh) {
 		this.tenXh = tenXh;
 	}
 
-	public Xephang(int maXh, String tenXh, Set<Taikhoancoxephang> taikhoancoxephangs) {
-		this.maXh = maXh;
+	public Xephang(String tenXh, Set<Taikhoancoxephang> taikhoancoxephangs) {
 		this.tenXh = tenXh;
 		this.taikhoancoxephangs = taikhoancoxephangs;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "MaXH", unique = true, nullable = false)
-	public int getMaXh() {
+	public Integer getMaXh() {
 		return this.maXh;
 	}
 
-	public void setMaXh(int maXh) {
+	public void setMaXh(Integer maXh) {
 		this.maXh = maXh;
 	}
 

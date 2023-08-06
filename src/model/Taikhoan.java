@@ -1,5 +1,5 @@
 package model;
-// Generated Jul 20, 2023 7:38:23 PM by Hibernate Tools 4.3.5.Final
+// Generated Jul 30, 2023 7:12:18 PM by Hibernate Tools 4.3.5.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,8 +7,6 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -22,13 +20,15 @@ import javax.persistence.TemporalType;
 @Table(name = "taikhoan", catalog = "toeic")
 public class Taikhoan implements java.io.Serializable {
 
-	private Integer maTk;
+	private int maTk;
 	private String tenTk;
 	private String matKhauTk;
 	private boolean quyenHan;
+	private String hoTen;
 	private Date namSinh;
-	private boolean gioiTinh;
+	private String gioiTinh;
 	private String queQuan;
+	private String email;
 	private Set<Taikhoanthuchienbaitap> taikhoanthuchienbaitaps = new HashSet<Taikhoanthuchienbaitap>(0);
 	private Set<Phanhoi> phanhois = new HashSet<Phanhoi>(0);
 	private Set<Taikhoanthuchienchude> taikhoanthuchienchudes = new HashSet<Taikhoanthuchienchude>(0);
@@ -36,38 +36,44 @@ public class Taikhoan implements java.io.Serializable {
 	public Taikhoan() {
 	}
 
-	public Taikhoan(String tenTk, String matKhauTk, boolean quyenHan, Date namSinh, boolean gioiTinh, String queQuan) {
+	public Taikhoan(int maTk, String tenTk, String matKhauTk, boolean quyenHan, String hoTen, Date namSinh,
+			String gioiTinh, String queQuan, String email) {
+		this.maTk = maTk;
 		this.tenTk = tenTk;
 		this.matKhauTk = matKhauTk;
 		this.quyenHan = quyenHan;
+		this.hoTen = hoTen;
 		this.namSinh = namSinh;
 		this.gioiTinh = gioiTinh;
 		this.queQuan = queQuan;
+		this.email = email;
 	}
 
-	public Taikhoan(String tenTk, String matKhauTk, boolean quyenHan, Date namSinh, boolean gioiTinh, String queQuan,
-			Set<Taikhoanthuchienbaitap> taikhoanthuchienbaitaps, Set<Phanhoi> phanhois,
-			Set<Taikhoanthuchienchude> taikhoanthuchienchudes) {
+	public Taikhoan(int maTk, String tenTk, String matKhauTk, boolean quyenHan, String hoTen, Date namSinh,
+			String gioiTinh, String queQuan, String email, Set<Taikhoanthuchienbaitap> taikhoanthuchienbaitaps,
+			Set<Phanhoi> phanhois, Set<Taikhoanthuchienchude> taikhoanthuchienchudes) {
+		this.maTk = maTk;
 		this.tenTk = tenTk;
 		this.matKhauTk = matKhauTk;
 		this.quyenHan = quyenHan;
+		this.hoTen = hoTen;
 		this.namSinh = namSinh;
 		this.gioiTinh = gioiTinh;
 		this.queQuan = queQuan;
+		this.email = email;
 		this.taikhoanthuchienbaitaps = taikhoanthuchienbaitaps;
 		this.phanhois = phanhois;
 		this.taikhoanthuchienchudes = taikhoanthuchienchudes;
 	}
 
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "MaTK", unique = true, nullable = false)
-	public Integer getMaTk() {
+	public int getMaTk() {
 		return this.maTk;
 	}
 
-	public void setMaTk(Integer maTk) {
+	public void setMaTk(int maTk) {
 		this.maTk = maTk;
 	}
 
@@ -98,6 +104,15 @@ public class Taikhoan implements java.io.Serializable {
 		this.quyenHan = quyenHan;
 	}
 
+	@Column(name = "HoTen", nullable = false, length = 50)
+	public String getHoTen() {
+		return this.hoTen;
+	}
+
+	public void setHoTen(String hoTen) {
+		this.hoTen = hoTen;
+	}
+
 	@Temporal(TemporalType.DATE)
 	@Column(name = "NamSinh", nullable = false, length = 10)
 	public Date getNamSinh() {
@@ -108,12 +123,12 @@ public class Taikhoan implements java.io.Serializable {
 		this.namSinh = namSinh;
 	}
 
-	@Column(name = "GioiTinh", nullable = false)
-	public boolean isGioiTinh() {
+	@Column(name = "GioiTinh", nullable = false, length = 5)
+	public String getGioiTinh() {
 		return this.gioiTinh;
 	}
 
-	public void setGioiTinh(boolean gioiTinh) {
+	public void setGioiTinh(String gioiTinh) {
 		this.gioiTinh = gioiTinh;
 	}
 
@@ -124,6 +139,15 @@ public class Taikhoan implements java.io.Serializable {
 
 	public void setQueQuan(String queQuan) {
 		this.queQuan = queQuan;
+	}
+
+	@Column(name = "Email", nullable = false, length = 50)
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "taikhoan")

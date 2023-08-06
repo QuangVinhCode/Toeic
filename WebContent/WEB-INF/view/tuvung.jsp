@@ -26,6 +26,7 @@
 			</div>
 		</a>
 	</c:forEach>
+	<a href="./WEB-INF/view/baitap.jsp"><h1>Bài tập</h1></a>
 </body>
 </html>
 

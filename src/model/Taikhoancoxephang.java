@@ -1,5 +1,5 @@
 package model;
-// Generated Jul 20, 2023 7:38:23 PM by Hibernate Tools 4.3.5.Final
+// Generated Jul 30, 2023 7:12:18 PM by Hibernate Tools 4.3.5.Final
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -50,8 +50,8 @@ public class Taikhoancoxephang implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns({
-			@JoinColumn(name = "MaTK", referencedColumnName = "MaTK", nullable = false, insertable = false, updatable = false),
-			@JoinColumn(name = "MaBT", referencedColumnName = "MaBT", nullable = false, insertable = false, updatable = false) })
+			@JoinColumn(name = "MaBT", referencedColumnName = "MaTK", nullable = false, insertable = false, updatable = false),
+			@JoinColumn(name = "MaTK", referencedColumnName = "MaBT", nullable = false, insertable = false, updatable = false) })
 	public Taikhoanthuchienbaitap getTaikhoanthuchienbaitap() {
 		return this.taikhoanthuchienbaitap;
 	}

@@ -1,5 +1,5 @@
 package model;
-// Generated Jul 20, 2023 7:38:23 PM by Hibernate Tools 4.3.5.Final
+// Generated Jul 30, 2023 7:12:18 PM by Hibernate Tools 4.3.5.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,6 +22,7 @@ public class Chude implements java.io.Serializable {
 	private Integer maCd;
 	private String tenCd;
 	private String hinhAnhCd;
+	private Set<Baitap> baitaps = new HashSet<Baitap>(0);
 	private Set<Tuvung> tuvungs = new HashSet<Tuvung>(0);
 	private Set<Taikhoanthuchienchude> taikhoanthuchienchudes = new HashSet<Taikhoanthuchienchude>(0);
 
@@ -33,10 +34,11 @@ public class Chude implements java.io.Serializable {
 		this.hinhAnhCd = hinhAnhCd;
 	}
 
-	public Chude(String tenCd, String hinhAnhCd, Set<Tuvung> tuvungs,
+	public Chude(String tenCd, String hinhAnhCd, Set<Baitap> baitaps, Set<Tuvung> tuvungs,
 			Set<Taikhoanthuchienchude> taikhoanthuchienchudes) {
 		this.tenCd = tenCd;
 		this.hinhAnhCd = hinhAnhCd;
+		this.baitaps = baitaps;
 		this.tuvungs = tuvungs;
 		this.taikhoanthuchienchudes = taikhoanthuchienchudes;
 	}
@@ -69,6 +71,15 @@ public class Chude implements java.io.Serializable {
 
 	public void setHinhAnhCd(String hinhAnhCd) {
 		this.hinhAnhCd = hinhAnhCd;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chude")
+	public Set<Baitap> getBaitaps() {
+		return this.baitaps;
+	}
+
+	public void setBaitaps(Set<Baitap> baitaps) {
+		this.baitaps = baitaps;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chude")

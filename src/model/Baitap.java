@@ -1,5 +1,5 @@
 package model;
-// Generated Jul 20, 2023 7:38:23 PM by Hibernate Tools 4.3.5.Final
+// Generated Jul 30, 2023 7:12:18 PM by Hibernate Tools 4.3.5.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,6 +20,7 @@ import javax.persistence.Table;
 public class Baitap implements java.io.Serializable {
 
 	private int maBt;
+	private Chude chude;
 	private String cauHoi;
 	private String goiY;
 	private String dapAn;
@@ -27,17 +30,19 @@ public class Baitap implements java.io.Serializable {
 	public Baitap() {
 	}
 
-	public Baitap(int maBt, String cauHoi, String goiY, String dapAn, int diemSo) {
+	public Baitap(int maBt, Chude chude, String cauHoi, String goiY, String dapAn, int diemSo) {
 		this.maBt = maBt;
+		this.chude = chude;
 		this.cauHoi = cauHoi;
 		this.goiY = goiY;
 		this.dapAn = dapAn;
 		this.diemSo = diemSo;
 	}
 
-	public Baitap(int maBt, String cauHoi, String goiY, String dapAn, int diemSo,
+	public Baitap(int maBt, Chude chude, String cauHoi, String goiY, String dapAn, int diemSo,
 			Set<Taikhoanthuchienbaitap> taikhoanthuchienbaitaps) {
 		this.maBt = maBt;
+		this.chude = chude;
 		this.cauHoi = cauHoi;
 		this.goiY = goiY;
 		this.dapAn = dapAn;
@@ -54,6 +59,16 @@ public class Baitap implements java.io.Serializable {
 
 	public void setMaBt(int maBt) {
 		this.maBt = maBt;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "MaCD", nullable = false)
+	public Chude getChude() {
+		return this.chude;
+	}
+
+	public void setChude(Chude chude) {
+		this.chude = chude;
 	}
 
 	@Column(name = "CauHoi", nullable = false, length = 150)
