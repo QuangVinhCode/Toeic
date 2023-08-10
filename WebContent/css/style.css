@@ -27,7 +27,7 @@ body {
 }
 
 
-a {
+.container a {
 	text-decoration: none; /* XÃ³a gáº¡ch chÃ¢n */
 	color: inherit; /* Káº¿ thá»«a mÃ u sáº¯c tá»« pháº§n tá»­ cha */
 	outline: none; /* XÃ³a ÄÆ°á»ng viá»n khi trá» chuá»t */

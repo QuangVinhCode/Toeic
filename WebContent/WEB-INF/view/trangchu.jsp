@@ -56,22 +56,30 @@
 						aria-disabled="true">Disabled</a></li>
 				</ul>
 				<div class="d-flex">
-					<% Object obj = session.getAttribute("Taikhoan");
-						Taikhoan taikhoan = null;
-						if (obj != null)
-						{
-							taikhoan = (Taikhoan)obj;
+					<%
+						Object obj = session.getAttribute("Taikhoan");
+					Taikhoan taikhoan = null;
+					if (obj != null) {
+						taikhoan = (Taikhoan) obj;
+					}
+					if (taikhoan == null) {
+					%>
+					<a class="btn btn-primary" href="servletHienThi?action=dangnhap">Đăng
+						nhập</a>
+					<%
+						} else {
+					%>
+					Xin chào <b><%=taikhoan.getTenTk()%></b>
+					<%
 						}
-						if (taikhoan==null)
-						{
-					%> 
-						<a class="btn btn-primary" href="servletHienThi?action=dangnhap">Đăng nhập</a>
-					<%	}else { %>
-							Xin chào <b><%= taikhoan.getTenTk() %></b>
-					<%	} %>
+					%>
+					<br>
+					<div class="d-flex">
+						<a href="servletHienThi?action=dangxuat">Đăng xuất</a>
+					</div>
 				</div>
 				<form class="d-flex" role="search">
-					
+
 					<input class="form-control me-2" type="search" placeholder="Search"
 						aria-label="Search">
 					<button class="btn btn-outline-success" type="submit">Search</button>
@@ -81,19 +89,18 @@
 	</nav>
 	<div class="container">
 		<c:forEach items="${listchude }" var="c">
-		<a href="servletHienThiTuVung?id=${c.maCd }">
-			<div class="container">
-				<div class="chude">
-					<div class="hinhanhcd">
-						<img src="./images/${c.hinhAnhCd }" alt="Error">
+			<a href="servletHienThi?action=tuvung&id=${c.maCd }">
+				<div class="container">
+					<div class="chude">
+						<div class="hinhanhcd">
+							<img src="./images/${c.hinhAnhCd }" alt="Error">
+						</div>
+						<div class="noidungcd">
+							<h1>${c.tenCd }</h1>
+						</div>
 					</div>
-					<div class="noidungcd">
-						<h1>${c.tenCd }</h1>
-					</div>
-				</div>
-			</div>
-		</a>
-	</c:forEach>
+			</a>
+		</c:forEach>
 	</div>
 
 </body>

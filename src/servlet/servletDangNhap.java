@@ -69,7 +69,6 @@ public class servletDangNhap extends HttpServlet {
 		{
 			if (tk.getTenTk().equals(TenDangNhap) && tk.getMatKhauTk().equals(MatKhau))
 			{
-				System.out.print(tk.getTenTk() + " " + tk.getMatKhauTk());
 				return tk;
 			}
 		}
