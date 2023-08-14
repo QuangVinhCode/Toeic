@@ -1,3 +1,6 @@
+<%@page import="dao.ChudeDAO"%>
+<%@page import="model.Chude"%>
+<%@page import="java.util.List"%>
 <%@page import="model.Taikhoan"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -5,8 +8,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Xếp hạng</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="./css/style.css">
@@ -70,14 +73,13 @@
 						} else {
 					%>
 					Xin chào <b><%=taikhoan.getTenTk()%></b>
-					<br>
 					<div class="d-flex">
 						<a href="servletHienThi?action=dangxuat">Đăng xuất</a>
 					</div>
 					<%
 						}
 					%>
-					
+
 				</div>
 				<form class="d-flex" role="search">
 
@@ -88,22 +90,48 @@
 			</div>
 		</div>
 	</nav>
-	<div class="container">
-		<c:forEach items="${listchude }" var="c">
-			<a href="servletHienThi?action=tuvung&id=${c.maCd }">
-				<div class="container">
-					<div class="chude">
-						<div class="hinhanhcd">
-							<img src="./images/${c.hinhAnhCd }" alt="Error">
-						</div>
-						<div class="noidungcd">
-							<h1>${c.tenCd }</h1>
-						</div>
-					</div>
-			</a>
-		</c:forEach>
+	<%
+		ChudeDAO dao = new ChudeDAO();
+	List<Chude> listchude = dao.findALL();
+	%>
+	<div class="dropdown">
+		<a class="btn btn-secondary dropdown-toggle" href="#" role="button"
+			data-bs-toggle="dropdown" aria-expanded="false"> Danh sách xếp
+			hạng </a>
+		<ul class="dropdown-menu">
+			<%
+				for (Chude cd : listchude) {
+			%>
+			<li><a class="dropdown-item"
+				href="servletXepHang?cd=<%=cd.getMaCd()%>"><%=cd.getTenCd()%></a></li>
+			<%
+				}
+			%>
+		</ul>
 	</div>
+	<div class="container text-center">
+		<h1>${tieude }</h1>
+	</div>
+	<div class="container">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Tên tài khoản</th>
+					<th scope="col">Tổng điểm</th>
+				</tr>
+			</thead>
+			<tbody class="table-group-divider">
+				<c:forEach items="${listTKXH }" var="c" varStatus="loopStatus">
+					<tr>
+						<th scope="row">${loopStatus.index + 1}</th>
+						<td>${c.taikhoan.tenTk }</td>
+						<td>${c.tongDiem }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 
+	</div>
 </body>
 </html>
-

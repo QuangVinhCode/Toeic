@@ -1,7 +1,10 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,9 +16,13 @@ import javax.servlet.http.HttpSession;
 
 import dao.BaitapDAO;
 import dao.ChudeDAO;
+import dao.TaikhoanthuchienchudeDAO;
 import dao.TuvungDAO;
 import model.Baitap;
 import model.Chude;
+import model.Taikhoan;
+import model.Taikhoanthuchienchude;
+import model.TaikhoanthuchienchudeId;
 import model.Tuvung;
 
 /**
@@ -24,15 +31,18 @@ import model.Tuvung;
 @WebServlet("/servletHienThi")
 public class servletHienThi extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static final ChudeDAO dao = new ChudeDAO();
-    private static final TuvungDAO daoTV = new TuvungDAO();
-    private static final BaitapDAO daoBT = new BaitapDAO();
-    public servletHienThi() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private static final ChudeDAO dao = new ChudeDAO();
+	private static final TuvungDAO daoTV = new TuvungDAO();
+	private static final BaitapDAO daoBT = new BaitapDAO();
+	private static final TaikhoanthuchienchudeDAO daoTHBT = new TaikhoanthuchienchudeDAO();
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public servletHienThi() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String action = request.getParameter("action");
 		String url = "";
@@ -67,27 +77,36 @@ public class servletHienThi extends HttpServlet {
 			request.setAttribute("listtuvung", listtuvung);
 			url = "/WEB-INF/view/tuvung.jsp";
 			break;
-		case "baitap":		
+		case "baitap":
 			int idchude = (int) session.getAttribute("idchude");
 			List<Baitap> listBT = daoBT.findALL();
-			int currentQuestionIndex = 0;
-			session.setAttribute("currentQuestionIndex", currentQuestionIndex);
 			List<Baitap> listBaiTapCD = new ArrayList<Baitap>();
-			for (Baitap bt : listBT)
-			{
-				if (bt.getChude().getMaCd()==idchude)
-				{
+			for (Baitap bt : listBT) {
+				if (bt.getChude().getMaCd() == idchude) {
 					listBaiTapCD.add(bt);
 				}
 			}
 			session.setAttribute("listBaiTapCD", listBaiTapCD);
 			url = "/WEB-INF/view/baitap.jsp";
 			break;
+		case "baitapchude":
+			int Tongdiem = (int) session.getAttribute("totalScore");
+			int idbaitapchude = (int) session.getAttribute("idchude");
+			Taikhoan taikhoan = (Taikhoan) session.getAttribute("Taikhoan");
+			Chude chude = new Chude();
+			chude.setMaCd(idbaitapchude);
+			TaikhoanthuchienchudeId idchudebt = new TaikhoanthuchienchudeId(taikhoan.getMaTk(), idbaitapchude); 
+			Taikhoanthuchienchude taikhoanthuchienchude = new Taikhoanthuchienchude(idchudebt,chude,taikhoan,new Date(),true,Tongdiem);	 
+			daoTHBT.add(taikhoanthuchienchude);
+			
+			url = "/servletXepHang";
+			break;
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

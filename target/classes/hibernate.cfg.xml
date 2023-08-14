@@ -12,13 +12,10 @@
         <property name="hibernate.search.autoregister_listeners">true</property>
         <property name="hibernate.validator.apply_to_ddl">false</property>
         <mapping class="model.Phanhoi" />
-        <mapping class="model.Taikhoancoxephang" />
         <mapping class="model.Taikhoanthuchienchude" />
-        <mapping class="model.Taikhoanthuchienbaitap" />
         <mapping class="model.Chude" />
         <mapping class="model.Tuvung" />
         <mapping class="model.Baitap" />
-        <mapping class="model.Xephang" />
         <mapping class="model.Taikhoan" />
     </session-factory>
 </hibernate-configuration>

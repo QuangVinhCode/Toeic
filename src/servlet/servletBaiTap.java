@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.BaitapDAO;
 import model.Baitap;
@@ -46,16 +47,15 @@ public class servletBaiTap extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-
-		List<Baitap> questions = new BaitapDAO().findALL();
+		HttpSession session = request.getSession();
+		List<Baitap> listBT = (List<Baitap>) session.getAttribute("listBaiTapCD");
 		int totalCorrectAnswers = 0;
 		int totalScore = 0;
 
 		try {
-			for (Baitap question : questions) {
+			for (Baitap question : listBT) {
 				String userAnswer = request.getParameter("answer_" + question.getMaBt());
 				String correctAnswer = question.getDapAn();
-
 				if (userAnswer != null && userAnswer.trim().equalsIgnoreCase(correctAnswer)) {
 					totalCorrectAnswers++;
 					totalScore += question.getDiemSo();

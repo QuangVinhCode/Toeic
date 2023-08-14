@@ -1,15 +1,12 @@
 package model;
-// Generated Jul 30, 2023 7:12:18 PM by Hibernate Tools 4.3.5.Final
+// Generated Aug 14, 2023 12:42:02 PM by Hibernate Tools 4.3.5.Final
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -25,7 +22,6 @@ public class Baitap implements java.io.Serializable {
 	private String goiY;
 	private String dapAn;
 	private int diemSo;
-	private Set<Taikhoanthuchienbaitap> taikhoanthuchienbaitaps = new HashSet<Taikhoanthuchienbaitap>(0);
 
 	public Baitap() {
 	}
@@ -37,17 +33,6 @@ public class Baitap implements java.io.Serializable {
 		this.goiY = goiY;
 		this.dapAn = dapAn;
 		this.diemSo = diemSo;
-	}
-
-	public Baitap(int maBt, Chude chude, String cauHoi, String goiY, String dapAn, int diemSo,
-			Set<Taikhoanthuchienbaitap> taikhoanthuchienbaitaps) {
-		this.maBt = maBt;
-		this.chude = chude;
-		this.cauHoi = cauHoi;
-		this.goiY = goiY;
-		this.dapAn = dapAn;
-		this.diemSo = diemSo;
-		this.taikhoanthuchienbaitaps = taikhoanthuchienbaitaps;
 	}
 
 	@Id
@@ -105,15 +90,6 @@ public class Baitap implements java.io.Serializable {
 
 	public void setDiemSo(int diemSo) {
 		this.diemSo = diemSo;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "baitap")
-	public Set<Taikhoanthuchienbaitap> getTaikhoanthuchienbaitaps() {
-		return this.taikhoanthuchienbaitaps;
-	}
-
-	public void setTaikhoanthuchienbaitaps(Set<Taikhoanthuchienbaitap> taikhoanthuchienbaitaps) {
-		this.taikhoanthuchienbaitaps = taikhoanthuchienbaitaps;
 	}
 
 }

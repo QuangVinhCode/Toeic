@@ -1,5 +1,5 @@
 package model;
-// Generated Jul 30, 2023 7:12:18 PM by Hibernate Tools 4.3.5.Final
+// Generated Aug 14, 2023 12:42:02 PM by Hibernate Tools 4.3.5.Final
 
 import java.util.Date;
 import javax.persistence.AttributeOverride;
@@ -25,15 +25,20 @@ public class Taikhoanthuchienchude implements java.io.Serializable {
 	private Chude chude;
 	private Taikhoan taikhoan;
 	private Date ngayTh;
+	private boolean hoanThanh;
+	private int tongDiem;
 
 	public Taikhoanthuchienchude() {
 	}
 
-	public Taikhoanthuchienchude(TaikhoanthuchienchudeId id, Chude chude, Taikhoan taikhoan, Date ngayTh) {
+	public Taikhoanthuchienchude(TaikhoanthuchienchudeId id, Chude chude, Taikhoan taikhoan, Date ngayTh,
+			boolean hoanThanh, int tongDiem) {
 		this.id = id;
 		this.chude = chude;
 		this.taikhoan = taikhoan;
 		this.ngayTh = ngayTh;
+		this.hoanThanh = hoanThanh;
+		this.tongDiem = tongDiem;
 	}
 
 	@EmbeddedId
@@ -76,6 +81,24 @@ public class Taikhoanthuchienchude implements java.io.Serializable {
 
 	public void setNgayTh(Date ngayTh) {
 		this.ngayTh = ngayTh;
+	}
+
+	@Column(name = "HoanThanh", nullable = false)
+	public boolean isHoanThanh() {
+		return this.hoanThanh;
+	}
+
+	public void setHoanThanh(boolean hoanThanh) {
+		this.hoanThanh = hoanThanh;
+	}
+
+	@Column(name = "TongDiem", nullable = false)
+	public int getTongDiem() {
+		return this.tongDiem;
+	}
+
+	public void setTongDiem(int tongDiem) {
+		this.tongDiem = tongDiem;
 	}
 
 }

@@ -1,5 +1,5 @@
 package model;
-// Generated Jul 30, 2023 7:12:18 PM by Hibernate Tools 4.3.5.Final
+// Generated Aug 14, 2023 12:42:02 PM by Hibernate Tools 4.3.5.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -29,7 +29,6 @@ public class Taikhoan implements java.io.Serializable {
 	private String gioiTinh;
 	private String queQuan;
 	private String email;
-	private Set<Taikhoanthuchienbaitap> taikhoanthuchienbaitaps = new HashSet<Taikhoanthuchienbaitap>(0);
 	private Set<Phanhoi> phanhois = new HashSet<Phanhoi>(0);
 	private Set<Taikhoanthuchienchude> taikhoanthuchienchudes = new HashSet<Taikhoanthuchienchude>(0);
 
@@ -50,8 +49,8 @@ public class Taikhoan implements java.io.Serializable {
 	}
 
 	public Taikhoan(int maTk, String tenTk, String matKhauTk, boolean quyenHan, String hoTen, Date namSinh,
-			String gioiTinh, String queQuan, String email, Set<Taikhoanthuchienbaitap> taikhoanthuchienbaitaps,
-			Set<Phanhoi> phanhois, Set<Taikhoanthuchienchude> taikhoanthuchienchudes) {
+			String gioiTinh, String queQuan, String email, Set<Phanhoi> phanhois,
+			Set<Taikhoanthuchienchude> taikhoanthuchienchudes) {
 		this.maTk = maTk;
 		this.tenTk = tenTk;
 		this.matKhauTk = matKhauTk;
@@ -61,7 +60,6 @@ public class Taikhoan implements java.io.Serializable {
 		this.gioiTinh = gioiTinh;
 		this.queQuan = queQuan;
 		this.email = email;
-		this.taikhoanthuchienbaitaps = taikhoanthuchienbaitaps;
 		this.phanhois = phanhois;
 		this.taikhoanthuchienchudes = taikhoanthuchienchudes;
 	}
@@ -148,15 +146,6 @@ public class Taikhoan implements java.io.Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "taikhoan")
-	public Set<Taikhoanthuchienbaitap> getTaikhoanthuchienbaitaps() {
-		return this.taikhoanthuchienbaitaps;
-	}
-
-	public void setTaikhoanthuchienbaitaps(Set<Taikhoanthuchienbaitap> taikhoanthuchienbaitaps) {
-		this.taikhoanthuchienbaitaps = taikhoanthuchienbaitaps;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "taikhoan")

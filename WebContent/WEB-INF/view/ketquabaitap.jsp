@@ -11,9 +11,12 @@
     <%@ page import="java.util.HashMap" %>
     <% Map<String, Object> quizResult = (HashMap<String, Object>) request.getAttribute("quizResult"); %>
     <% int totalCorrectAnswers = (int) quizResult.get("totalCorrectAnswers"); %>
-    <% int totalScore = (int) quizResult.get("totalScore"); %>
+    <% int totalScore = (int) quizResult.get("totalScore"); 
+    	session.setAttribute("totalScore", totalScore);
+    %>
 
     <p>Total Correct Answers: <%= totalCorrectAnswers %> points</p>
     <p>Total Score: <%= totalScore %> points</p>
+    <a href="servletHienThi?action=baitapchude">Xác nhận</a>
 </body>
 </html>
