@@ -1,5 +1,5 @@
 package model;
-// Generated Aug 14, 2023 12:42:02 PM by Hibernate Tools 4.3.5.Final
+// Generated Aug 21, 2023 3:25:15 PM by Hibernate Tools 4.3.5.Final
 
 import java.util.Date;
 import javax.persistence.AttributeOverride;
@@ -43,8 +43,9 @@ public class Taikhoanthuchienchude implements java.io.Serializable {
 
 	@EmbeddedId
 
-	@AttributeOverrides({ @AttributeOverride(name = "maTk", column = @Column(name = "MaTK", nullable = false)),
-			@AttributeOverride(name = "maCd", column = @Column(name = "MaCD", nullable = false)) })
+	@AttributeOverrides({
+			@AttributeOverride(name = "maTk", column = @Column(name = "MaTK", nullable = false, length = 10)),
+			@AttributeOverride(name = "maCd", column = @Column(name = "MaCD", nullable = false, length = 10)) })
 	public TaikhoanthuchienchudeId getId() {
 		return this.id;
 	}

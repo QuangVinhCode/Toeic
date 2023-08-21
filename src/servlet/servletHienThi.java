@@ -54,11 +54,19 @@ public class servletHienThi extends HttpServlet {
 			request.setAttribute("listchude", listchude);
 			url = "/WEB-INF/view/trangchu.jsp";
 			break;
+		case "hienthiadmin":
+			List<Chude> listchudecd = dao.findALL();
+			request.setAttribute("listchude", listchudecd);
+			url = "/WEB-INF/admin/trangchuadmin.jsp";
+			break;
 		case "dangky":
 			url = "/WEB-INF/view/dangky.jsp";
 			break;
 		case "dangnhap":
 			url = "/WEB-INF/view/dangnhap.jsp";
+			break;
+		case "xephang":
+			url = "/servletXepHang";
 			break;
 		case "dangxuat":
 			session.invalidate();
@@ -67,10 +75,10 @@ public class servletHienThi extends HttpServlet {
 		case "tuvung":
 			List<Tuvung> listfullTuVung = daoTV.findALL();
 			List<Tuvung> listtuvung = new ArrayList<Tuvung>();
-			int id = Integer.parseInt(request.getParameter("id"));
+			String id = request.getParameter("id");
 			session.setAttribute("idchude", id);
 			for (Tuvung tv : listfullTuVung) {
-				if (tv.getChude().getMaCd() == id) {
+				if (tv.getChude().getMaCd().equals(id)) {
 					listtuvung.add(tv);
 				}
 			}
@@ -78,11 +86,11 @@ public class servletHienThi extends HttpServlet {
 			url = "/WEB-INF/view/tuvung.jsp";
 			break;
 		case "baitap":
-			int idchude = (int) session.getAttribute("idchude");
+			String idchude = (String) session.getAttribute("idchude");
 			List<Baitap> listBT = daoBT.findALL();
 			List<Baitap> listBaiTapCD = new ArrayList<Baitap>();
 			for (Baitap bt : listBT) {
-				if (bt.getChude().getMaCd() == idchude) {
+				if (bt.getChude().getMaCd().equals(idchude)) {
 					listBaiTapCD.add(bt);
 				}
 			}
@@ -91,14 +99,13 @@ public class servletHienThi extends HttpServlet {
 			break;
 		case "baitapchude":
 			int Tongdiem = (int) session.getAttribute("totalScore");
-			int idbaitapchude = (int) session.getAttribute("idchude");
+			String idbaitapchude = (String) session.getAttribute("idchude");
 			Taikhoan taikhoan = (Taikhoan) session.getAttribute("Taikhoan");
 			Chude chude = new Chude();
 			chude.setMaCd(idbaitapchude);
 			TaikhoanthuchienchudeId idchudebt = new TaikhoanthuchienchudeId(taikhoan.getMaTk(), idbaitapchude); 
 			Taikhoanthuchienchude taikhoanthuchienchude = new Taikhoanthuchienchude(idchudebt,chude,taikhoan,new Date(),true,Tongdiem);	 
 			daoTHBT.add(taikhoanthuchienchude);
-			
 			url = "/servletXepHang";
 			break;
 		}

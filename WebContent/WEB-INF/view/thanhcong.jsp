@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>Thành Công</title>
 </head>
 <body>
 	<h1>Chúc mừng bạn đăng ký thành công</h1>

@@ -63,17 +63,18 @@ public class servletDangKy extends HttpServlet {
 		String url = "";
 		String baoloi = "";
 		if (existsByName(TenDangNhap)) {
-			baoloi += "Tên tài khoản đã tồn tại,vui lòng chọn tên đăng nhập khác. <br/>";
+			baoloi += "Tên đăng nhập đã tồn tại ! <br/>";
 		}
 		if (MatKhau.equals(MatKhauNhapLai) !=true) {
-			baoloi += "Mật khẩu và mật khẩu nhập lại không giống nhau. <br/>";
+			baoloi += "Mật khẩu và mật khẩu nhập lại không khớp. <br/>";
 		}
 		if (baoloi.length() > 0) {
 			url = "/WEB-INF/view/dangky.jsp";
 		} else {
 			Random rd = new Random();
 			int maKH = rd.nextInt(10000000);
-			Taikhoan tk = new Taikhoan(maKH, TenDangNhap, MatKhau, false, HoTen, stringToDate(NamSinh), GioiTinh, QueQuan,Email);
+			String id = "TK" + String.valueOf(maKH) + "";
+			Taikhoan tk = new Taikhoan(id, TenDangNhap, MatKhau, false, HoTen, stringToDate(NamSinh), GioiTinh, QueQuan,Email);
 			dao.add(tk);
 			url = "/WEB-INF/view/thanhcong.jsp";
 		}

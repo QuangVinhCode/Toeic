@@ -5,9 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Trang Chủ</title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danh Sách Chủ Đề</title>
 <link rel="stylesheet" type="text/css" href="./css/style.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -39,8 +38,21 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="servletHienThi?action=hienthi">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="servletHienThi?action=xephang">Rank</a></li>
+						aria-current="page" href="servletHienThi?action=hienthiadmin">Home</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="servletHienThi?action=xephang">Rank</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> Quản lý </a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="servletQLChuDe">Chủ
+									đề</a></li>
+							<li><a class="dropdown-item" href="servletQLTuVung">Từ
+									Vựng</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="servletQLBaiTap">Bài
+									Tập</a></li>
+						</ul></li>
 				</ul>
 				<div class="d-flex">
 					<%
@@ -69,20 +81,35 @@
 		</div>
 	</nav>
 	<div class="container">
-		<c:forEach items="${listchude }" var="c">
-			<a href="servletHienThi?action=tuvung&id=${c.maCd }">
-					<div class="chude" style="background-color: #0066ff">
-						<div class="hinhanhcd">
-							<img src="./images/${c.hinhAnhCd }" alt="Error">
-						</div>
-						<div class="noidungcd">
-							<h1>${c.tenCd }</h1>
-						</div>
-					</div>
-			</a>
-		</c:forEach>
+		<h2 class="text-center">Danh sách chủ đề</h2>
+		<p>
+			<a class="btn btn-success" href="servletQLChuDe?action=add">Thêm
+				chủ đề mới</a>
+		</p>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Hình Ảnh</th>
+					<th>Mã Chủ Đề</th>
+					<th>Tên Chủ Đề</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${listchude }" var="c">
+					<tr>
+						<td width="100"><img alt="" src='./images/${c.hinhAnhCd }'
+							width="80" height="70"></td>
+						<td>${c.maCd }</td>
+						<td>${c.tenCd }</td>
+						<td><a class="btn btn-primary btn-sm"
+							href="servletQLChuDe?action=add&id=${c.maCd }">Edit</a> <a
+							class="btn btn-danger btn-sm"
+							href="servletQLChuDe?action=delete&id=${c.maCd }">Delete</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 	</div>
-
 </body>
 </html>
-

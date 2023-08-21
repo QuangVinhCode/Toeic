@@ -5,9 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Trang Chủ</title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi Tiết Chủ Đề</title>
 <link rel="stylesheet" type="text/css" href="./css/style.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -39,8 +38,17 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="servletHienThi?action=hienthi">Home</a></li>
+						aria-current="page" href="servletHienThi?action=hienthiadmin">Home</a></li>
 					<li class="nav-item"><a class="nav-link" href="servletHienThi?action=xephang">Rank</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> Quản lý </a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="servletQLChuDe">Chủ đề</a></li>
+							<li><a class="dropdown-item" href="servletQLTuVung">Từ Vựng</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="servletQLBaiTap">Bài Tập</a></li>
+						</ul></li>
 				</ul>
 				<div class="d-flex">
 					<%
@@ -68,21 +76,47 @@
 			</div>
 		</div>
 	</nav>
-	<div class="container">
-		<c:forEach items="${listchude }" var="c">
-			<a href="servletHienThi?action=tuvung&id=${c.maCd }">
-					<div class="chude" style="background-color: #0066ff">
-						<div class="hinhanhcd">
-							<img src="./images/${c.hinhAnhCd }" alt="Error">
-						</div>
-						<div class="noidungcd">
-							<h1>${c.tenCd }</h1>
-						</div>
+	<div class="container" style="margin-top: 10px">
+		<div class="row"
+			style="border: 1px darkgrey solid; border-radius: 10px; width: 50%; margin: 0 auto; padding: 20px">
+			<div class="col-sm-12">
+				<h2 class="myclass">Thêm chủ đề mới</h2>
+				<form action="servletQLChuDe?action=${ACTION }" method="post"
+					enctype="multipart/form-data">
+					<div class="form-group">
+						<label>Mã chủ đề</label> <input type="text" class="form-control"
+							name="id" id="id" value="${chude.maCd }" readonly>
 					</div>
-			</a>
-		</c:forEach>
+					<div class="form-group">
+						<label>Tên chủ đề</label> <input type="text" class="form-control"
+							name="name" id="name" value="${chude.tenCd }">
+					</div>
+					<div class="form-group">
+						<label>Ảnh chủ đề</label> <br>
+						<c:if test="${chude.hinhAnhCd != null}">
+							<img alt="Error" src="./images/${chude.hinhAnhCd }" width="80"
+								height="70">
+						</c:if>
+						<input type="file" class="form-control" name="image" id="image"
+							value="${chude.hinhAnhCd}">
+					</div>
+					<button type="submit" class="btn btn-primary">Lưu</button>
+					<button type="reset" class="btn btn-primary">Hủy</button>
+				</form>
+			</div>
+		</div>
 	</div>
-
 </body>
 </html>
+<script type="text/javascript">
+	window.addEventListener('load', function() {
+		var inputElement = document.querySelector('input[name="id"]');
 
+		if (inputElement && !inputElement.value.trim()) {
+			var randomNumber = Math.floor(Math.random() * 10000000) + 1;
+			var newValue = 'CD' + randomNumber;
+			inputElement.value = newValue;
+			inputElement.readOnly = true;
+		}
+	});
+</script>

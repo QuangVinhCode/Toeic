@@ -1,5 +1,5 @@
 package model;
-// Generated Aug 14, 2023 12:42:02 PM by Hibernate Tools 4.3.5.Final
+// Generated Aug 21, 2023 3:25:15 PM by Hibernate Tools 4.3.5.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 @Table(name = "taikhoan", catalog = "toeic")
 public class Taikhoan implements java.io.Serializable {
 
-	private int maTk;
+	private String maTk;
 	private String tenTk;
 	private String matKhauTk;
 	private boolean quyenHan;
@@ -35,7 +35,7 @@ public class Taikhoan implements java.io.Serializable {
 	public Taikhoan() {
 	}
 
-	public Taikhoan(int maTk, String tenTk, String matKhauTk, boolean quyenHan, String hoTen, Date namSinh,
+	public Taikhoan(String maTk, String tenTk, String matKhauTk, boolean quyenHan, String hoTen, Date namSinh,
 			String gioiTinh, String queQuan, String email) {
 		this.maTk = maTk;
 		this.tenTk = tenTk;
@@ -48,7 +48,7 @@ public class Taikhoan implements java.io.Serializable {
 		this.email = email;
 	}
 
-	public Taikhoan(int maTk, String tenTk, String matKhauTk, boolean quyenHan, String hoTen, Date namSinh,
+	public Taikhoan(String maTk, String tenTk, String matKhauTk, boolean quyenHan, String hoTen, Date namSinh,
 			String gioiTinh, String queQuan, String email, Set<Phanhoi> phanhois,
 			Set<Taikhoanthuchienchude> taikhoanthuchienchudes) {
 		this.maTk = maTk;
@@ -66,12 +66,12 @@ public class Taikhoan implements java.io.Serializable {
 
 	@Id
 
-	@Column(name = "MaTK", unique = true, nullable = false)
-	public int getMaTk() {
+	@Column(name = "MaTK", unique = true, nullable = false, length = 10)
+	public String getMaTk() {
 		return this.maTk;
 	}
 
-	public void setMaTk(int maTk) {
+	public void setMaTk(String maTk) {
 		this.maTk = maTk;
 	}
 

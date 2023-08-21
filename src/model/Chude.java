@@ -1,5 +1,5 @@
 package model;
-// Generated Aug 14, 2023 12:42:02 PM by Hibernate Tools 4.3.5.Final
+// Generated Aug 21, 2023 3:25:15 PM by Hibernate Tools 4.3.5.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Table(name = "chude", catalog = "toeic")
 public class Chude implements java.io.Serializable {
 
-	private int maCd;
+	private String maCd;
 	private String tenCd;
 	private String hinhAnhCd;
 	private Set<Baitap> baitaps = new HashSet<Baitap>(0);
@@ -27,13 +27,13 @@ public class Chude implements java.io.Serializable {
 	public Chude() {
 	}
 
-	public Chude(int maCd, String tenCd, String hinhAnhCd) {
+	public Chude(String maCd, String tenCd, String hinhAnhCd) {
 		this.maCd = maCd;
 		this.tenCd = tenCd;
 		this.hinhAnhCd = hinhAnhCd;
 	}
 
-	public Chude(int maCd, String tenCd, String hinhAnhCd, Set<Baitap> baitaps, Set<Tuvung> tuvungs,
+	public Chude(String maCd, String tenCd, String hinhAnhCd, Set<Baitap> baitaps, Set<Tuvung> tuvungs,
 			Set<Taikhoanthuchienchude> taikhoanthuchienchudes) {
 		this.maCd = maCd;
 		this.tenCd = tenCd;
@@ -45,12 +45,12 @@ public class Chude implements java.io.Serializable {
 
 	@Id
 
-	@Column(name = "MaCD", unique = true, nullable = false)
-	public int getMaCd() {
+	@Column(name = "MaCD", unique = true, nullable = false, length = 10)
+	public String getMaCd() {
 		return this.maCd;
 	}
 
-	public void setMaCd(int maCd) {
+	public void setMaCd(String maCd) {
 		this.maCd = maCd;
 	}
 

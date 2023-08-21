@@ -6,9 +6,6 @@
   <table-filter match-catalog="toeic" match-name="chude"/>
   <table-filter match-catalog="toeic" match-name="phanhoi"/>
   <table-filter match-catalog="toeic" match-name="taikhoan"/>
-  <table-filter match-catalog="toeic" match-name="taikhoancoxephang"/>
-  <table-filter match-catalog="toeic" match-name="taikhoanthuchienbaitap"/>
   <table-filter match-catalog="toeic" match-name="taikhoanthuchienchude"/>
   <table-filter match-catalog="toeic" match-name="tuvung"/>
-  <table-filter match-catalog="toeic" match-name="xephang"/>
 </hibernate-reverse-engineering>

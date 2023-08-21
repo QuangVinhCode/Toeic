@@ -1,64 +1,55 @@
 @charset "utf-8";
 
-html,
-body {
-  height: 100%;
+html, body {
+	height: 100%;
 }
 
 .form-signin {
-  max-width: 330px;
-  padding: 1rem;
+	max-width: 330px;
+	padding: 1rem;
 }
 
 .form-signin .form-floating:focus-within {
-  z-index: 2;
+	z-index: 2;
 }
 
 .form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+	margin-bottom: -1px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
 }
 
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+	margin-bottom: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 }
 
-
-.container a {
+.container > a {
 	text-decoration: none; /* XÃ³a gáº¡ch chÃ¢n */
 	color: inherit; /* Káº¿ thá»«a mÃ u sáº¯c tá»« pháº§n tá»­ cha */
 	outline: none; /* XÃ³a ÄÆ°á»ng viá»n khi trá» chuá»t */
 }
 
 .chude {
+	border: 1px solid #c31717;
+	padding: 10px;
+	display: flex;
+	border-radius: 10px;
+	background-color: #0066ff;
+}
+
+.hinhanhcd img {
+	margin-right: 10px;
+	width: 100px;
 	height: 100px;
-	background-color: rebeccapurple;
-	opacity: 0.7;
-	border-radius: 5px;
-	position: relative;
+	float: left;
 }
 
-.chude>.hinhanhcd {
-	height: 90%;
-	position: absolute;
-	bottom: 5%;
-	left: 1%;
-}
-
-.chude>.hinhanhcd>img {
-	height: 100%;
-}
-
-.chude>.noidungcd {
-	text-align: center;
-}
-
-.chude>.noidungcd h1 {
-	line-height: inherit;
-	color: black;
+.noidungcd {
+	border-left: 1px solid #ccc;
+	padding-left: 10px;
+	: #000;
 }
 
 .bd-placeholder-img {

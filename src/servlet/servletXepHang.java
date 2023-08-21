@@ -35,9 +35,7 @@ public class servletXepHang extends HttpServlet {
 		String tieude ="";
 		if (idcd != null) {
 			for (Taikhoanthuchienchude tk : listTK) {
-				int id =Integer.parseInt(idcd);
-				System.out.println("Trong if if :" + id);
-				if (tk.getChude().getMaCd()== id) {
+				if (tk.getChude().getMaCd().equals(idcd)) {
 					listTKCD.add(tk);
 					tieude = tk.getChude().getTenCd();
 				}

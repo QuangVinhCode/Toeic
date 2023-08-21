@@ -1,5 +1,5 @@
 package model;
-// Generated Aug 14, 2023 12:42:02 PM by Hibernate Tools 4.3.5.Final
+// Generated Aug 21, 2023 3:25:15 PM by Hibernate Tools 4.3.5.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "tuvung", catalog = "toeic")
 public class Tuvung implements java.io.Serializable {
 
-	private int maTv;
+	private String maTv;
 	private Chude chude;
 	private String tenTuVung;
 	private String dichTv;
@@ -25,7 +25,7 @@ public class Tuvung implements java.io.Serializable {
 	public Tuvung() {
 	}
 
-	public Tuvung(int maTv, Chude chude, String tenTuVung, String dichTv, String hinhAnhTv) {
+	public Tuvung(String maTv, Chude chude, String tenTuVung, String dichTv, String hinhAnhTv) {
 		this.maTv = maTv;
 		this.chude = chude;
 		this.tenTuVung = tenTuVung;
@@ -35,12 +35,12 @@ public class Tuvung implements java.io.Serializable {
 
 	@Id
 
-	@Column(name = "MaTV", unique = true, nullable = false)
-	public int getMaTv() {
+	@Column(name = "MaTV", unique = true, nullable = false, length = 10)
+	public String getMaTv() {
 		return this.maTv;
 	}
 
-	public void setMaTv(int maTv) {
+	public void setMaTv(String maTv) {
 		this.maTv = maTv;
 	}
 

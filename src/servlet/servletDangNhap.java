@@ -48,13 +48,18 @@ public class servletDangNhap extends HttpServlet {
 		Taikhoan tk = new Taikhoan();
 		tk.setTenTk(TenDangNhap);
 		tk.setMatKhauTk(MatKhau);
-		//Taikhoan Taikhoan = dao.findTaiKhoanByTenAndMatKhau(tk.getTenTk().toString(), tk.getMatKhauTk().toString());
 		Taikhoan Taikhoan = TimTKvaMK(TenDangNhap, MatKhau	);
 		if (Taikhoan != null)
 		{
 			HttpSession session = request.getSession();
 			session.setAttribute("Taikhoan", Taikhoan);
-			url = "/servletHienThi?action=hienthi";
+			if (Taikhoan.isQuyenHan()==true)
+			{
+				url = "/servletHienThi?action=hienthiadmin";
+			}else {
+				url = "/servletHienThi?action=hienthi";
+			}
+			
 		}
 		else {
 			request.setAttribute("baoloi", "Tên đăng nhập hoặc mật khẩu không chính xác");

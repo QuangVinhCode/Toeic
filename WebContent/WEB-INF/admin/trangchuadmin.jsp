@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Trang Chủ</title>
+<title>Trang Chủ Admin</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="./css/style.css">
@@ -39,8 +39,17 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="servletHienThi?action=hienthi">Home</a></li>
+						aria-current="page" href="servletHienThi?action=hienthiadmin">Home</a></li>
 					<li class="nav-item"><a class="nav-link" href="servletHienThi?action=xephang">Rank</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> Quản lý </a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="servletQLChuDe">Chủ đề</a></li>
+							<li><a class="dropdown-item" href="servletQLTuVung">Từ Vựng</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="servletQLBaiTap">Bài Tập</a></li>
+						</ul></li>
 				</ul>
 				<div class="d-flex">
 					<%

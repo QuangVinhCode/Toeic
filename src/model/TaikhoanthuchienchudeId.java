@@ -1,5 +1,5 @@
 package model;
-// Generated Aug 14, 2023 12:42:02 PM by Hibernate Tools 4.3.5.Final
+// Generated Aug 21, 2023 3:25:15 PM by Hibernate Tools 4.3.5.Final
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -10,32 +10,32 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class TaikhoanthuchienchudeId implements java.io.Serializable {
 
-	private int maTk;
-	private int maCd;
+	private String maTk;
+	private String maCd;
 
 	public TaikhoanthuchienchudeId() {
 	}
 
-	public TaikhoanthuchienchudeId(int maTk, int maCd) {
+	public TaikhoanthuchienchudeId(String maTk, String maCd) {
 		this.maTk = maTk;
 		this.maCd = maCd;
 	}
 
-	@Column(name = "MaTK", nullable = false)
-	public int getMaTk() {
+	@Column(name = "MaTK", nullable = false, length = 10)
+	public String getMaTk() {
 		return this.maTk;
 	}
 
-	public void setMaTk(int maTk) {
+	public void setMaTk(String maTk) {
 		this.maTk = maTk;
 	}
 
-	@Column(name = "MaCD", nullable = false)
-	public int getMaCd() {
+	@Column(name = "MaCD", nullable = false, length = 10)
+	public String getMaCd() {
 		return this.maCd;
 	}
 
-	public void setMaCd(int maCd) {
+	public void setMaCd(String maCd) {
 		this.maCd = maCd;
 	}
 
@@ -48,14 +48,17 @@ public class TaikhoanthuchienchudeId implements java.io.Serializable {
 			return false;
 		TaikhoanthuchienchudeId castOther = (TaikhoanthuchienchudeId) other;
 
-		return (this.getMaTk() == castOther.getMaTk()) && (this.getMaCd() == castOther.getMaCd());
+		return ((this.getMaTk() == castOther.getMaTk()) || (this.getMaTk() != null && castOther.getMaTk() != null
+				&& this.getMaTk().equals(castOther.getMaTk())))
+				&& ((this.getMaCd() == castOther.getMaCd()) || (this.getMaCd() != null && castOther.getMaCd() != null
+						&& this.getMaCd().equals(castOther.getMaCd())));
 	}
 
 	public int hashCode() {
 		int result = 17;
 
-		result = 37 * result + this.getMaTk();
-		result = 37 * result + this.getMaCd();
+		result = 37 * result + (getMaTk() == null ? 0 : this.getMaTk().hashCode());
+		result = 37 * result + (getMaCd() == null ? 0 : this.getMaCd().hashCode());
 		return result;
 	}
 
